@@ -5,7 +5,7 @@
     "MyS3Bucket": {
       "Type": "AWS::S3::Bucket",
       "Properties": {
-        "BucketName": "my-unique-bucket-name"
+        "BucketName": "s3bucket1810202345"
       }
     }
   }
