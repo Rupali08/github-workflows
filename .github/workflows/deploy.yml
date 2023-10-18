@@ -23,7 +23,7 @@ jobs:
       - name: Deploy CloudFormation Stack
         run: |
           aws cloudformation deploy \
-            --template-file path/to/your/template.yaml \
+            --template-file .github/workflows \
             --stack-name my-s3-bucket-stack \
             --capabilities CAPABILITY_NAMED_IAM
         env:
