@@ -1,0 +1,30 @@
+name: Deploy S3 Bucket
+
+on:
+  push:
+    branches:
+      - main # Adjust as needed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1 # Change to your desired region
+
+      - name: Deploy CloudFormation Stack
+        run: |
+          aws cloudformation deploy \
+            --template-file path/to/your/template.yaml \
+            --stack-name my-s3-bucket-stack \
+            --capabilities CAPABILITY_NAMED_IAM
+        env:
+          AWS_DEFAULT_REGION: us-east-1 # Change to your desired region
